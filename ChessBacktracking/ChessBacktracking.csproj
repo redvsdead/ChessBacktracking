@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chess.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +55,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +79,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chessFigures\bB.png" />
+    <Content Include="chessFigures\bK.png" />
+    <Content Include="chessFigures\bN.png" />
+    <Content Include="chessFigures\bP.png" />
+    <Content Include="chessFigures\bQ.png" />
+    <Content Include="chessFigures\bR.png" />
+    <Content Include="chessFigures\wB.png" />
+    <Content Include="chessFigures\wK.png" />
+    <Content Include="chessFigures\wN.png" />
+    <Content Include="chessFigures\wP.png" />
+    <Content Include="chessFigures\wQ.png" />
+    <Content Include="chessFigures\wR.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
