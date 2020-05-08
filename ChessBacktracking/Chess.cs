@@ -40,7 +40,7 @@ namespace ChessBacktracking
             }
             minCount = M*M;
             Size = M;
-            enemyCount = 6; //максимальное количество фигур противника для этой доски
+            enemyCount = 7; //максимальное количество фигур противника для этой доски
             board = new Cell[M, M];
             int cE = 0;
             Random rnd = new Random();
@@ -49,7 +49,7 @@ namespace ChessBacktracking
                 for (int j = 0; j < M; ++j)
                 {
                     board[i, j] = new Cell();
-                    if ((cE < enemyCount) && (rnd.Next(0, 10) < 3)) //генерируем рандомное к-во фигур противника (до 16)
+                    if ((cE < enemyCount) && (rnd.Next(0, 10) < 5)) //генерируем рандомное к-во фигур противника (до 16)
                     {
                         board[i, j].isEnemy = true;
                         cE++;
@@ -98,7 +98,8 @@ namespace ChessBacktracking
 
         public void placeFigure(int currCount, DataGridView dataGridView)
         {
-            if (currCount == minCount) //если текущее к-во наших фигур равно минимальному, то выход
+            ////если текущее к-во наших фигур равно минимальному, то выход
+            if (currCount == minCount || currCount > enemyCount) 
             {
                 return;
             }

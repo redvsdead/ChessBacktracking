@@ -29,7 +29,12 @@ namespace ChessBacktracking
         {
             chessGame = new Chess(M, 1);
             chessGame.drawBoard(boardBefore);
+            MessageBox.Show("Расставляем фигуры");
             chessGame.placeFigure(0, boardAfter);
+            if (chessGame.minCount < 64)
+                minOutput.Text = "Минимальное количество фигур, требующееся для покрытия: " + chessGame.minCount;
+            else
+                minOutput.Text = "Такой комбинации не существует";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,7 +47,10 @@ namespace ChessBacktracking
             chessGame.drawBoard(boardBefore);
             MessageBox.Show("Расставляем фигуры");
             chessGame.placeFigure(0, boardAfter);
-            minOutput.Text = "Минимальное количество фигур, требующееся для покрытия: " + chessGame.minCount;
+            if (chessGame.minCount < 64)
+                minOutput.Text = "Минимальное количество фигур, требующееся для покрытия: " + chessGame.minCount;
+            else
+                minOutput.Text = "Такой комбинации не существует";
         }
     }
 }
