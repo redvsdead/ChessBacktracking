@@ -35,6 +35,7 @@
             this.queenButton = new System.Windows.Forms.Button();
             this.knightButton = new System.Windows.Forms.Button();
             this.boardAfter = new System.Windows.Forms.DataGridView();
+            this.minOutput = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.boardBefore)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardAfter)).BeginInit();
             this.SuspendLayout();
@@ -95,11 +96,20 @@
             this.boardAfter.Size = new System.Drawing.Size(327, 247);
             this.boardAfter.TabIndex = 4;
             // 
+            // minOutput
+            // 
+            this.minOutput.AutoSize = true;
+            this.minOutput.Location = new System.Drawing.Point(395, 322);
+            this.minOutput.Name = "minOutput";
+            this.minOutput.Size = new System.Drawing.Size(0, 17);
+            this.minOutput.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(860, 626);
+            this.Controls.Add(this.minOutput);
             this.Controls.Add(this.boardAfter);
             this.Controls.Add(this.knightButton);
             this.Controls.Add(this.queenButton);
@@ -111,6 +121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.boardBefore)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.boardAfter)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -122,6 +133,7 @@
         private System.Windows.Forms.Button queenButton;
         private System.Windows.Forms.Button knightButton;
         public System.Windows.Forms.DataGridView boardAfter;
+        private System.Windows.Forms.Label minOutput;
     }
 }
 

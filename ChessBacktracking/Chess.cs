@@ -14,8 +14,7 @@ namespace ChessBacktracking
 
     public class Cell
     {
-
-        public bool isPlayer;       //является ли ферзем(конем)
+        public bool isPlayer;      //является ли ферзем(конем)
         public bool isEnemy;       //является ли фигурой оппонента
 
         public Cell()
@@ -29,8 +28,8 @@ namespace ChessBacktracking
     {
         public bool Queen = false;    //играем королевой или конем
         public int Size;
-        static int minCount;   //миниальное количество наших фигур на доске
-        int enemyCount = 5;    //максимальное к-во фигур противника по умолчанию (по правилам шахмат их 16)
+        public int minCount;      //миниальное количество наших фигур на доске
+        int enemyCount;    //максимальное к-во фигур противника по умолчанию (по правилам шахмат их 16)
         public Cell[,] board;
 
         public Chess(int M, int choice)
@@ -41,6 +40,7 @@ namespace ChessBacktracking
             }
             minCount = M*M;
             Size = M;
+            enemyCount = 6; //максимальное количество фигур противника для этой доски
             board = new Cell[M, M];
             int cE = 0;
             Random rnd = new Random();
@@ -111,7 +111,7 @@ namespace ChessBacktracking
                         if (Queen)  //если играем ферзями
                         {
                             //если клетка пустая, то пробуем поставить ферзя
-                            if (!board[i, j].isEnemy && !AttackedByQ(i, j))
+                            if (!board[i, j].isEnemy && !board[i, j].isPlayer)
                             {
                                 //ставим ферзя 
                                 board[i, j].isPlayer = true;
@@ -127,7 +127,7 @@ namespace ChessBacktracking
                         else
                         {
                             //если клетка пустая, то пробуем поставить коня
-                            if (!board[i, j].isEnemy && !AttackedByK(i, j))
+                            if (!board[i, j].isEnemy && !board[i, j].isPlayer)
                             {
                                 //ставим коня 
                                 board[i, j].isPlayer = true;
@@ -149,7 +149,6 @@ namespace ChessBacktracking
         bool AttackedByQ(int row, int col) //возвращает true, если клетка с фигурой атакована хотя бы одним ферзем
         {
             int i, j;
-
             //ищем ферзя в столбце
             for (i = 0; i < Size; ++i)
                 if (board[i, col].isPlayer) 
@@ -246,13 +245,22 @@ namespace ChessBacktracking
 
                     if (board[i, j].isEnemy)
                     {
-                        cell.Value = "X";   //зачеркнем клетки, где стоят фигуры противника
+                        cell.Value = "\u265F";   //зачеркнем клетки, где стоят фигуры противника
+                        cell.Style.BackColor = System.Drawing.Color.Pink;
                         row.Cells.Add(cell);
                     }
                     else
-                    if (board[i, j].isPlayer)
+                    if (board[i, j].isPlayer) //так обозначим нашу фигуру
                     {
-                        cell.Value = "O";   //так обозначим нашу фигуру (ферзь или конь)
+                        if (Queen)
+                        {
+                            cell.Value = "\u2655";
+                        }
+                        else
+                        {
+                            cell.Value = "\u2658";
+                        }
+                        cell.Style.BackColor = System.Drawing.Color.LightBlue;
                         row.Cells.Add(cell);
                     }
                     else

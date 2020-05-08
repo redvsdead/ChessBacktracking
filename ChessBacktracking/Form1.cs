@@ -40,7 +40,9 @@ namespace ChessBacktracking
         {
             chessGame = new Chess(M, 2);
             chessGame.drawBoard(boardBefore);
+            MessageBox.Show("Расставляем фигуры");
             chessGame.placeFigure(0, boardAfter);
+            minOutput.Text = "Минимальное количество фигур, требующееся для покрытия: " + chessGame.minCount;
         }
     }
 }
